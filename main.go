@@ -37,7 +37,7 @@ func main() {
 	}
 
 	if *version == true {
-		fmt.Println("video-converter-0.3.0")
+		fmt.Println("video-converter-0.3.1")
 		return
 	}
 

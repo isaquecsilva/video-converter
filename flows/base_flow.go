@@ -53,7 +53,7 @@ func (base *baseFlow) getInputFile() string {
 			continue
 		}
 
-		filePath = strings.Trim(filePath, "\r\n ")
+		filePath = strings.Trim(filePath, "\r\n\"' ")
 
 		_, err := os.Stat(filePath)
 		if errors.Is(err, os.ErrNotExist) {
@@ -189,6 +189,11 @@ func (base *baseFlow) gpuToUse() (types.GpuType, error) {
 }
 
 func (base *baseFlow) getBitrate(defaultBitrate int) int {
+	if defaultBitrate <= 0 {
+		base.printer.Warn(true, "Bitrate padrão é muito baixo (%dkbps). Desta forma, caso um valor não seja específicado, seram usados 1000kbps...")
+		defaultBitrate = 1000
+	}
+
 	for {
 		base.printer.Info(false, "Especifique o bitrate do vídeo de saída (se vazio, será usado o padrão do vídeo %dkbps): ", defaultBitrate)
 

@@ -9,7 +9,7 @@ func defaultColorMap() ColorMap {
 		"info":    color.New(color.FgWhite),
 		"success": color.New(color.FgGreen),
 		"warn":    color.New(color.FgYellow),
-		"error":   color.New(color.BgRed, color.FgWhite),
+		"error":   color.New(color.FgRed),
 	}
 }
 
